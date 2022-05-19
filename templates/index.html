@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Webpage</title>
+</head>
+<body>
+    
+
+   <h1>Jones Matrix Calculations</h1>
+
+   <h2> Input polarisation: {{input_pol}}</h2>
+
+
+
+   <ul id="navigation">
+     {% for item in lads %}
+         <li>{{ item }}</li>
+     {% endfor %}
+   </ul>
+   <form method = "post" action = '/'>
+   <select name = "optics_select">
+      <option value ='Horizontal Linear Polariser' > Horizontal Linear Polariser </option>
+      <option value ='Vertical Linear Polariser' > Vertical Linear Polariser</option>
+      <option value ='Linear Polariser at 45 Degrees' > Linear Polariser at 45 Degrees</option>
+      <option value ='Linear Polariser at -45 Degrees' > Linear Polariser at -45 Degrees</option>
+      <option value ='Quarter Wave Plate, Slow Axis Horizontal' >Quarter Wave Plate, Slow Axis Horizontal </option>
+      <option value ='Quarter Wave Plate, Slow Axis Vertical' > Quarter Wave Plate, Slow Axis Vertical</option>
+      <option value ='Half Wave Plate, Slow Axis Horizontal' > 'Half Wave Plate, Slow Axis Horizontal'</option>
+      <option value ='Half Wave Plate, Slow Axis Vertical' > Half Wave Plate, Slow Axis Vertical</option>
+   </select>
+
+   <input type="submit" name = "add" value = "Add"> 
+   <input type="submit" name = "remove" value = "Remove">
+   </form>
+
+   <h2>{{test}}</h2>
+
+ 
+
+    {# a comment #}
+</body>
+</html>
