@@ -2,11 +2,19 @@
 <html lang="en">
 <head>
     <title>My Webpage</title>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript"
+        src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
 </head>
 <body>
     
 
    <h1>Jones Matrix Calculations</h1>
+
+   
 
    <h2> Input polarisation: {{input_pol}}</h2>
 
@@ -33,6 +41,8 @@
    <input type="submit" name = "remove" value = "Remove">
    </form>
 
+
+   <h2>{{jones_calc}}</h2>
    <h2>{{test}}</h2>
 
  

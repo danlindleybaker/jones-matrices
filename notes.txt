@@ -1,0 +1,2 @@
+- can include tex formatted maths in HTML using MATHJAX and write the tex in the 'normal' way ($maths$)
+
