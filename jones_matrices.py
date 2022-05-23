@@ -4,15 +4,13 @@ Jones matrices calculations
 
 """
 
-
-
 import numpy as np
 
 H_Polariser = np.array(([1,0],[0,0]))
 V_Polariser = np.array(([0,0],[0,1]))
 
-Lin_Polariser_45 = 0.5*np.array([[1,1],[1,1]])
-Lin_Polariser_minus45 = 0.5*np.array(([1,-1],[-1,1]))
+Lin_Polariser_45 = (1/np.sqrt(2))*np.array([[1,1],[1,1]])
+Lin_Polariser_minus45 = (1/np.sqrt(2))*np.array(([1,-1],[-1,1]))
 
 #QWP_H = np.exp(1j*np.pi/4)*np.array(([1,0],[0,-1*1j]))
 #QWP_V = np.exp(1j*np.pi/4)*np.array(([1,0],[0,1j]))
@@ -72,23 +70,26 @@ def calculate_polarisation(optics_list,input_polarisation):
         for i,element in enumerate(optics_list):
             if i == 0:
                 polarisation = optical_element_dict[element].dot(polarisation_dict[input_polarisation])
-                string = tex_dict[element] + tex_dict[input_polarisation]
+                string = tex_dict[element] + '$\cdot$' + tex_dict[input_polarisation]
 
             else:
                 polarisation = optical_element_dict[element].dot(polarisation)
-                string = tex_dict[element] + string
-
+                string = tex_dict[element] + '$\cdot$' + string
+        string = string + fr'$= \begin{{bmatrix}} {polarisation[0][0]} \\  {polarisation[1][0]} \end{{bmatrix}}$'
+        
         for key in polarisation_dict:
-            comparison = polarisation_dict[key] == polarisation
+            
+            if np.array_equal(polarisation_dict[key], polarisation):
+                
+                return key, string
+            elif np.array_equal(polarisation_dict[key], polarisation/(1/np.sqrt(2))):
+                return key, string
+            elif np.array_equal(polarisation_dict[key], polarisation/0.5):
+                return key,string
 
-            if len(comparison)!=0:
-                if comparison.all():
-
-                    return key, string
         
-                else:
-                    return None, string
         
+        return 'No output', string        
 
     else:
         polarisation = input_polarisation

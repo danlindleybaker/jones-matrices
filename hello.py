@@ -4,7 +4,7 @@ from jones_matrices import calculate_polarisation #type:ignore
 app = Flask(__name__)
 
 
-input_polarisation = 'Linear 45 Degrees'
+input_polarisation = 'Linear Horizontal'
 element_order = []
 
 @app.route("/", methods = ['POST','GET'])
