@@ -16,18 +16,18 @@ def hello_world():
             element_order.append(str(request.form.get("optics_select")))
             selected = (request.form.get('optics_select'))
             output,string = calculate_polarisation(element_order,input_polarisation)
-            return render_template('index.html', lads = element_order,test = output, input_pol = input_polarisation,jones_calc = string)
+            return render_template('index.html', lads = element_order,output_pol = output, input_pol = input_polarisation,jones_calc = string)
         
         elif request.form.get('remove') == 'Remove':
             if len(element_order)>0:
                 element_order.pop()
                 output,string = calculate_polarisation(element_order,input_polarisation)
             else:
-                output = r'\begin{bmatrix} 1 & 2 & 3\\ a & b & c \end{bmatrix}'
-                string = 'blah'
+                output = input_polarisation 
+                string = ''
             selected = (request.form.get('optics_select'))
             
-            return render_template('index.html', lads = element_order,test = output, input_pol = input_polarisation,jones_calc = string)
+            return render_template('index.html', lads = element_order,output_pol = output, input_pol = input_polarisation,jones_calc = string)
 
             
     elif request.method == 'GET':
